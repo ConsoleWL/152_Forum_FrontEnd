@@ -1,6 +1,7 @@
 // General Imports
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.css";
 
 // Pages Imports
 import HomePage from "./pages/HomePage/HomePage";
@@ -13,6 +14,7 @@ import Footer from "./components/Footer/Footer";
 
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
+import CreateTopic from "./pages/CreateTopicPage/CreateTopic";
 
 function App() {
   return (
@@ -27,6 +29,16 @@ function App() {
             </PrivateRoute>
           }
         />
+
+        <Route
+          path="/addtopic"
+          element={
+            <PrivateRoute>
+              <CreateTopic />
+            </PrivateRoute>
+          }
+        />
+
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
       </Routes>
