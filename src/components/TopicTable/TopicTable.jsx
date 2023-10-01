@@ -7,7 +7,6 @@ const TopicTable = ({ topicsObj }) => {
 
   return (
     <div>
-      <h4>Topic Table</h4>
       <table className="table table-striped">
         <thead>
           <tr>

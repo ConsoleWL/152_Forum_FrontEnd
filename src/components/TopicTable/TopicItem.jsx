@@ -1,6 +1,8 @@
 const TopicItem = ({ topic }) => {
+  const handleActive = () => {};
+
   return (
-    <tr>
+    <tr onClick={handleActive}>
       <td>{topic.topicId}</td>
       <td>{topic.title}</td>
       <td>{topic.user.userName}</td>
