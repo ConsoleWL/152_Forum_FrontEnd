@@ -41,7 +41,7 @@ function App() {
         />
 
         <Route
-          path="/topic"
+          path="/topic/:topicId"
           element={
             <PrivateRoute>
               <TopicPage />
