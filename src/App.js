@@ -16,6 +16,7 @@ import Footer from "./components/Footer/Footer";
 import PrivateRoute from "./utils/PrivateRoute";
 import CreateTopic from "./pages/CreateTopicPage/CreateTopic";
 import TopicPage from "./pages/TopicPage/TopicPage";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
 
 function App() {
   return (
@@ -45,6 +46,15 @@ function App() {
           element={
             <PrivateRoute>
               <TopicPage />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/profile"
+          element={
+            <PrivateRoute>
+              <ProfilePage />
             </PrivateRoute>
           }
         />
