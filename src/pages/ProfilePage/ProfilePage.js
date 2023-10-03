@@ -28,6 +28,7 @@ const ProfilePage = () => {
   return (
     <div>
       <div>Profile page</div>
+      <div></div>
     </div>
   );
 };
