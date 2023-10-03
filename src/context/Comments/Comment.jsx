@@ -6,10 +6,7 @@ const Comment = ({ commentObj }) => {
         <span>id: {commentObj.commentId}</span>
         <span>likes: {commentObj.likes}</span>
         <div>
-          <span>
-            UserId. Need to change to username but some reason we get null need
-            to include later in the controller: {commentObj.userId}
-          </span>
+          <span>Author: {commentObj.user.userName}</span>
         </div>
         <span>Text: {commentObj.text}</span>
       </div>

@@ -1,6 +1,6 @@
 import TopicItem from "./TopicItem";
 
-const TopicTable = ({ topicsObj }) => {
+const TopicTable = ({ topicsObj = [] }) => {
   const topicItem = topicsObj.map((topic) => (
     <TopicItem key={topic.topicId} topic={topic} />
   ));

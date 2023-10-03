@@ -17,8 +17,6 @@ const TopicPage = () => {
     fetchReviews();
   }, []);
 
-  // console.log(topicItem);
-
   const fetchTopic = async () => {
     try {
       let response = await axios.get(
@@ -37,7 +35,7 @@ const TopicPage = () => {
       );
       setTopicReview(response2.data);
     } catch (error) {
-      console.log("Error in fetch reviews by Book Id in Book DetailsPage");
+      console.log("Error in fetch reviews in Topic page");
     }
   };
   return (
