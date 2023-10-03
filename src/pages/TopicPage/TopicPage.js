@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
-import TopicItem from "../../components/TopicTable/TopicItem";
 
 const TopicPage = () => {
   const [user, token] = useAuth();

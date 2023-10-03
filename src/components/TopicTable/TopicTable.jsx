@@ -6,20 +6,22 @@ const TopicTable = ({ topicsObj = [] }) => {
   ));
 
   return (
-    <div>
-      <table className="table table-striped">
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Title</th>
-            <th>Athor</th>
-            <th>Published</th>
-            <th>Likes</th>
-          </tr>
-        </thead>
-        <tbody>{topicItem}</tbody>
-      </table>
-    </div>
+    topicItem && (
+      <div>
+        <table className="table table-striped">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Title</th>
+              <th>Athor</th>
+              <th>Published</th>
+              <th>Likes</th>
+            </tr>
+          </thead>
+          <tbody>{topicItem}</tbody>
+        </table>
+      </div>
+    )
   );
 };
 

@@ -51,13 +51,22 @@ function App() {
         />
 
         <Route
-          path="/profile"
+          path="/profile/:userName"
           element={
             <PrivateRoute>
               <ProfilePage />
             </PrivateRoute>
           }
         />
+
+        {/* <Route
+          path="/profile"
+          element={
+            <PrivateRoute>
+              <ProfilePage />
+            </PrivateRoute>
+          }
+        /> */}
 
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
