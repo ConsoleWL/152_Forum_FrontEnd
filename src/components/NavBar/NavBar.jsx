@@ -16,7 +16,7 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <Link to="/profile/">
+          <Link to="/profile/:userName">
             <button>Profile</button>
           </Link>
         </li>

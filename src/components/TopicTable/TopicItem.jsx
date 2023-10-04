@@ -3,6 +3,7 @@ import axios from "axios";
 import AuthContext from "../../context/AuthContext";
 import React from "react";
 import useAuth from "../../hooks/useAuth";
+import dayjs from "dayjs";
 
 const TopicItem = ({ topic, userObj }) => {
   const [user, token] = useAuth();
@@ -43,9 +44,11 @@ const TopicItem = ({ topic, userObj }) => {
       );
       console.log(response);
     } catch (error) {
-      console.warn("Error in Home Page , Topic Item,Delete Button", error);
+      console.warn("Error in Home Page , Topic Item, Delete Button", error);
     }
   };
+
+  const shortDateFormat = dayjs(topic.timePosted).format("MM/DD/YYYY");
 
   return (
     <tr onClick={handleActive}>
@@ -58,7 +61,7 @@ const TopicItem = ({ topic, userObj }) => {
           {topic.user.userName}
         </Link>
       </td>
-      <td>{topic.timePosted}</td>
+      <td> {shortDateFormat}</td>
       <td>
         <button onClick={handleTopicLikes}>{topic.likes}</button>
       </td>

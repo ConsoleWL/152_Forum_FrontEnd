@@ -35,7 +35,9 @@ const ProfilePage = () => {
       <div>
         <Profile userObj={userObj} />
         <TopicTable topicsObj={userObj.topics} userObj={userObj} />
-        {userObj.comments && <Comments props={userObj.comments} />}
+        {userObj.comments && (
+          <Comments props={userObj.comments} userObj={userObj} />
+        )}
       </div>
     </div>
   );
