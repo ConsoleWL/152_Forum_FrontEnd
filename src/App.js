@@ -17,6 +17,7 @@ import PrivateRoute from "./utils/PrivateRoute";
 import CreateTopic from "./pages/CreateTopicPage/CreateTopic";
 import TopicPage from "./pages/TopicPage/TopicPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
+import DirecMessages from "./pages/MessagesPage/MessagesPage";
 
 function App() {
   return (
@@ -55,6 +56,15 @@ function App() {
           element={
             <PrivateRoute>
               <ProfilePage />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/Messages"
+          element={
+            <PrivateRoute>
+              <DirecMessages />
             </PrivateRoute>
           }
         />
