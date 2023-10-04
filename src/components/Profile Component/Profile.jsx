@@ -1,7 +1,7 @@
 import TopicTable from "../TopicTable/TopicTable";
 
 const Profile = ({ userObj }) => {
-  console.log(userObj);
+  // console.log(userObj);
   return (
     <div>
       <div>UserName: {userObj.userName}</div>
