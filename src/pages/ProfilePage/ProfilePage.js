@@ -11,6 +11,9 @@ const ProfilePage = () => {
   const [userObj, setUserObj] = useState({});
   const { userName } = useParams();
 
+  console.log(userObj);
+  console.log(user);
+
   useEffect(() => {
     fetchUser();
   }, []);
@@ -31,7 +34,7 @@ const ProfilePage = () => {
       <div>Profile page</div>
       <div>
         <Profile userObj={userObj} />
-        <TopicTable topicsObj={userObj.topics} />
+        <TopicTable topicsObj={userObj.topics} userObj={userObj} />
         {userObj.comments && <Comments props={userObj.comments} />}
       </div>
     </div>

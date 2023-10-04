@@ -4,12 +4,16 @@ import AuthContext from "../../context/AuthContext";
 import React from "react";
 import useAuth from "../../hooks/useAuth";
 
-const TopicItem = ({ topic }) => {
+const TopicItem = ({ topic, userObj }) => {
   const [user, token] = useAuth();
   const handleActive = () => {}; // what is that stuff?
 
-  // it work but does not re-renders automatically, You need to refresh the page
+  var checkProdileIsAuthorizedUser = false;
+  if (userObj != null) {
+    checkProdileIsAuthorizedUser = user.id === userObj.id;
+  }
 
+  // it work but does not re-renders automatically, You need to refresh the page
   const handleTopicLikes = async (e) => {
     try {
       const response = await axios.put(
@@ -24,6 +28,22 @@ const TopicItem = ({ topic }) => {
       console.log(response);
     } catch (error) {
       console.warn("Error in Home Page , Topic Item, Like Button", error);
+    }
+  };
+
+  const handleDeleteTopic = async (e) => {
+    try {
+      const response = await axios.delete(
+        `https://localhost:5001/api/topic/${topic.topicId}`,
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
+      );
+      console.log(response);
+    } catch (error) {
+      console.warn("Error in Home Page , Topic Item,Delete Button", error);
     }
   };
 
@@ -42,6 +62,12 @@ const TopicItem = ({ topic }) => {
       <td>
         <button onClick={handleTopicLikes}>{topic.likes}</button>
       </td>
+
+      {checkProdileIsAuthorizedUser ? (
+        <td>
+          <button onClick={handleDeleteTopic}>Delete</button>
+        </td>
+      ) : null}
     </tr>
   );
 };
