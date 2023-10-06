@@ -4,6 +4,7 @@ import useAuth from "../../hooks/useAuth";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import dayjs from "dayjs";
 
 const Topic = ({ props }) => {
   const navigate = useNavigate();
@@ -13,6 +14,8 @@ const Topic = ({ props }) => {
   const [title, setTitle] = useState();
 
   var checkProdileIsAuthorizedUser = user.userName === props.user.userName;
+
+  const shortDateFormat = dayjs(props.timePosted).format("MM/DD/YYYY");
 
   const handleUpdateButton = async (e) => {
     e.preventDefault();
@@ -53,7 +56,7 @@ const Topic = ({ props }) => {
             {props.user.userName}
           </Link>
         </div>
-        <div>PublishedDate {props.timePosted}</div>
+        <div>PublishedDate {shortDateFormat}</div>
         <div>Likes: {props.likes}</div>
       </div>
 

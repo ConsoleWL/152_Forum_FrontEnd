@@ -12,11 +12,11 @@ const DirecMessages = () => {
 
   useEffect(() => {
     fetchUsers();
-    fetchMessages();
   }, []);
 
-  console.log(users);
-  console.log(activeIndex);
+  useEffect(() => {
+    fetchMessages();
+  }, [activeIndex]);
 
   const fetchUsers = async () => {
     try {
@@ -34,12 +34,24 @@ const DirecMessages = () => {
     }
   };
 
-  // const selectedUSer = user[activeIndex];
-
   const fetchMessages = async () => {
     try {
+      if (activeIndex === -1) {
+        return;
+      }
+
+      let response = await axios.get(
+        `https://localhost:5001/api/DirectMessage/messages/${users[activeIndex].id}`,
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
+      );
+
+      setMessages(response.data);
     } catch (error) {
-      console.log("Error in MessagesPage ", error);
+      console.log("Error in FetchMessages in Messages Page", error);
     }
   };
 
@@ -53,12 +65,7 @@ const DirecMessages = () => {
           setActiveIndex={setActiveIndex}
         />
       </div>
-      <div>
-        <DirectMessagesUser
-          userObj={users[activeIndex]}
-          activeIndex={activeIndex}
-        />
-      </div>
+      <div>{messages && <DirectMessagesUser messages={messages} />}</div>
     </div>
   );
 };
