@@ -11,7 +11,6 @@ const DirecMessages = () => {
   const [messages, setMessages] = useState([]);
   //
   const [activeIndex, setActiveIndex] = useState(-1);
-  const selectedUser = users[activeIndex];
 
   useEffect(() => {
     fetchUsers();
@@ -34,7 +33,7 @@ const DirecMessages = () => {
     }
   };
 
-  // for direct messages
+  // for direct messages empty
   const fetchMessages = async () => {
     try {
     } catch (error) {
@@ -53,7 +52,7 @@ const DirecMessages = () => {
         />
       </div>
       <div>
-        <DirectMessagesUser userObj={selectedUser} />
+        <DirectMessagesUser userObj={users[activeIndex]} />
       </div>
     </div>
   );

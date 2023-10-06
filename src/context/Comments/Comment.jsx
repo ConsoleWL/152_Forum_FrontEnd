@@ -101,23 +101,18 @@ const Comment = ({ commentObj, userObj }) => {
           <span>Text: {commentObj.text}</span>
         </div>
 
-        {
-          isEditing ? (
-            <div>
-              <form onSubmit={handleCommentText}>
-                <label>Text</label>
-                <textarea
-                  value={text}
-                  onChange={(e) => setText(e.target.value)}
-                />
-                <button type="submit">Save</button>
-              </form>
-            </div>
-          ) : null
-          // <div>
-          //   <span>Text: {commentObj.text}</span>
-          // </div>
-        }
+        {isEditing ? (
+          <div>
+            <form onSubmit={handleCommentText}>
+              <label>Text</label>
+              <textarea
+                value={text}
+                onChange={(e) => setText(e.target.value)}
+              />
+              <button type="submit">Save</button>
+            </form>
+          </div>
+        ) : null}
 
         <div>
           {checkProdileIsAuthorizedUser ? (

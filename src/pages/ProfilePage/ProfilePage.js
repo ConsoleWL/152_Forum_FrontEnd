@@ -10,6 +10,44 @@ const ProfilePage = () => {
   const [user, token] = useAuth();
   const [userObj, setUserObj] = useState({});
   const { userName } = useParams();
+  const [isSendMessage, setIsSendMessage] = useState(false);
+  const [messageBox, setMessageBox] = useState(false);
+  const [messageText, setMessageText] = useState("");
+
+  var chechProfileIsUf = user.userName !== userObj.userName;
+  const handleSendMessageButton = async (e) => {
+    e.preventDefault();
+    setMessageBox(!messageBox);
+  };
+
+  const messageData = {
+    text: messageText,
+    useridtoid: userObj.id,
+  };
+  // console.log(messageObj);
+
+  const handleSendMessage = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post(
+        `https://localhost:5001/api/DirectMessage`,
+        messageData,
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
+      );
+
+      setMessageBox(!messageBox);
+    } catch (error) {
+      console.warn(
+        "Error in handleSendMessage function, in Profile Page",
+        error
+      );
+    }
+  };
 
   useEffect(() => {
     fetchUser();
@@ -30,6 +68,23 @@ const ProfilePage = () => {
     <div>
       <h4>Profile page</h4>
       <div>
+        {chechProfileIsUf ? (
+          <button onClick={handleSendMessageButton}>Send a Messages</button>
+        ) : null}
+
+        {messageBox ? (
+          <div>
+            <form onSubmit={handleSendMessage}>
+              <label>Text</label>
+              <textarea
+                value={messageText}
+                onChange={(e) => setMessageText(e.target.value)}
+              ></textarea>
+              <button type="submit">SendMessage</button>
+            </form>
+          </div>
+        ) : null}
+
         <Profile userObj={userObj} />
         <TopicTable topicsObj={userObj.topics} userObj={userObj} />
         {userObj.comments && (
