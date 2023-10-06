@@ -33,7 +33,7 @@ const CreateTopic = ({ onNewTopic }) => {
       );
       navigate("/");
     } catch (error) {
-      console.warn("Error submitting new aaaatopic", error);
+      console.warn("Error submitting new a new topic", error);
     }
   };
 

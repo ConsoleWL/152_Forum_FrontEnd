@@ -21,7 +21,7 @@ const HomePage = () => {
 
   useEffect(() => {
     fetchTopic();
-  }, []);
+  }, [topics]);
 
   return (
     <div>

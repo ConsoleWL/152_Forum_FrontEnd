@@ -11,12 +11,9 @@ const ProfilePage = () => {
   const [userObj, setUserObj] = useState({});
   const { userName } = useParams();
 
-  console.log(userObj);
-  console.log(user);
-
   useEffect(() => {
     fetchUser();
-  }, []);
+  }, [userObj.topics]);
 
   const fetchUser = async () => {
     try {

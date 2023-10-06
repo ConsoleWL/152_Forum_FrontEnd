@@ -15,7 +15,7 @@ const TopicPage = ({}) => {
   useEffect(() => {
     fetchTopic();
     fetchReviews();
-  }, []);
+  }, [topicReview]);
 
   const handleAddComent = async (e) => {
     e.preventDefault();
