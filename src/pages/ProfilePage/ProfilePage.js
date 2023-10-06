@@ -31,7 +31,7 @@ const ProfilePage = () => {
 
   return (
     <div>
-      <div>Profile page</div>
+      <h4>Profile page</h4>
       <div>
         <Profile userObj={userObj} />
         <TopicTable topicsObj={userObj.topics} userObj={userObj} />

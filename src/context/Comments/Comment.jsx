@@ -3,15 +3,46 @@ import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
+import dayjs from "dayjs";
 
 const Comment = ({ commentObj, userObj }) => {
   const { topicId } = useParams();
   const [user, token] = useAuth();
+  const [isEditing, setIsEditing] = useState(false);
+  const [text, setText] = useState();
 
   var checkProdileIsAuthorizedUser = false;
   if (userObj != null) {
     checkProdileIsAuthorizedUser = user.id === userObj.id;
   }
+
+  const handleUpdateUpdate = async (e) => {
+    e.preventDefault();
+    setIsEditing(!isEditing);
+    setText(commentObj.text);
+  };
+
+  const updatedText = {
+    text,
+  };
+
+  const handleCommentText = async (e) => {
+    try {
+      e.preventDefault();
+      const response = await axios.put(
+        `https://localhost:5001/api/comment/${commentObj.commentId}`,
+        updatedText,
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
+      );
+      setIsEditing(!isEditing);
+    } catch (error) {
+      console.warn("Error in Comment , Topic Item, Update Button", error);
+    }
+  };
 
   const handleDeleteComment = async (e) => {
     try {
@@ -48,6 +79,8 @@ const Comment = ({ commentObj, userObj }) => {
     }
   };
 
+  const shortDateFormat = dayjs(commentObj.timePosted).format("MM/DD/YYYY");
+
   return (
     <div>
       <br />
@@ -63,12 +96,36 @@ const Comment = ({ commentObj, userObj }) => {
             {commentObj.user.userName}
           </Link>
         </span>
+        <span>{shortDateFormat}</span>
         <div>
           <span>Text: {commentObj.text}</span>
         </div>
+
+        {isEditing ? (
+          <div>
+            <form onSubmit={handleCommentText}>
+              <label>Text</label>
+              <textarea
+                value={text}
+                onChange={(e) => setText(e.target.value)}
+              />
+              <button type="submit">Save</button>
+            </form>
+          </div>
+        ) : (
+          <div>
+            <span>Text: {commentObj.text}</span>
+          </div>
+        )}
+
         <div>
           {checkProdileIsAuthorizedUser ? (
             <button onClick={handleDeleteComment}>Delete</button>
+          ) : null}
+        </div>
+        <div>
+          {checkProdileIsAuthorizedUser && !isEditing ? (
+            <button onClick={handleUpdateUpdate}>Update</button>
           ) : null}
         </div>
       </div>

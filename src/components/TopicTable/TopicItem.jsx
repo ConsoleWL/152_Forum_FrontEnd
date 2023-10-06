@@ -1,20 +1,21 @@
 import { Link } from "react-router-dom";
 import axios from "axios";
 import AuthContext from "../../context/AuthContext";
-import React from "react";
+
 import useAuth from "../../hooks/useAuth";
 import dayjs from "dayjs";
+import { useNavigate } from "react-router-dom";
 
 const TopicItem = ({ topic, userObj }) => {
   const [user, token] = useAuth();
   const handleActive = () => {}; // what is that stuff?
+  const navigate = useNavigate();
 
   var checkProdileIsAuthorizedUser = false;
   if (userObj != null) {
     checkProdileIsAuthorizedUser = user.id === userObj.id;
   }
 
-  // it work but does not re-renders automatically, You need to refresh the page
   const handleTopicLikes = async (e) => {
     try {
       const response = await axios.put(
@@ -48,6 +49,13 @@ const TopicItem = ({ topic, userObj }) => {
     }
   };
 
+  const handleUpdateTopic = async (e) => {
+    try {
+    } catch (error) {
+      console.warn("Error in Home Page , Topic Item, Delete Button", error);
+    }
+  };
+
   const shortDateFormat = dayjs(topic.timePosted).format("MM/DD/YYYY");
 
   return (
@@ -69,6 +77,12 @@ const TopicItem = ({ topic, userObj }) => {
       {checkProdileIsAuthorizedUser ? (
         <td>
           <button onClick={handleDeleteTopic}>Delete</button>
+        </td>
+      ) : null}
+
+      {checkProdileIsAuthorizedUser ? (
+        <td>
+          <button onClick={handleUpdateTopic}>Update</button>
         </td>
       ) : null}
     </tr>

@@ -6,6 +6,7 @@ import "./NavBar.css";
 
 const Navbar = () => {
   const { logoutUser, user } = useContext(AuthContext);
+
   const navigate = useNavigate();
   return (
     <div className="navBar">
@@ -16,9 +17,11 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <Link to="/profile/:userName">
-            <button>Profile</button>
-          </Link>
+          {user && (
+            <Link to={`/profile/${user.userName}`}>
+              <button>Profile</button>
+            </Link>
+          )}
         </li>
         <li>
           <Link to="/">

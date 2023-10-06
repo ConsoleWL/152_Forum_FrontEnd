@@ -4,7 +4,6 @@ const TopicTable = ({ topicsObj = [], userObj }) => {
   const topicItem = topicsObj.map((topic) => (
     <TopicItem key={topic.topicId} topic={topic} userObj={userObj} />
   ));
-
   return (
     topicItem && (
       <div>
