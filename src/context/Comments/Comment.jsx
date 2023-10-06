@@ -96,27 +96,28 @@ const Comment = ({ commentObj, userObj }) => {
             {commentObj.user.userName}
           </Link>
         </span>
-        <span>{shortDateFormat}</span>
+        <span> published: {shortDateFormat} </span>
         <div>
           <span>Text: {commentObj.text}</span>
         </div>
 
-        {isEditing ? (
-          <div>
-            <form onSubmit={handleCommentText}>
-              <label>Text</label>
-              <textarea
-                value={text}
-                onChange={(e) => setText(e.target.value)}
-              />
-              <button type="submit">Save</button>
-            </form>
-          </div>
-        ) : (
-          <div>
-            <span>Text: {commentObj.text}</span>
-          </div>
-        )}
+        {
+          isEditing ? (
+            <div>
+              <form onSubmit={handleCommentText}>
+                <label>Text</label>
+                <textarea
+                  value={text}
+                  onChange={(e) => setText(e.target.value)}
+                />
+                <button type="submit">Save</button>
+              </form>
+            </div>
+          ) : null
+          // <div>
+          //   <span>Text: {commentObj.text}</span>
+          // </div>
+        }
 
         <div>
           {checkProdileIsAuthorizedUser ? (
