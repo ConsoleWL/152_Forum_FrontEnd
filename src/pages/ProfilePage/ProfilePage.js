@@ -10,7 +10,7 @@ const ProfilePage = () => {
   const [user, token] = useAuth();
   const [userObj, setUserObj] = useState({});
   const { userName } = useParams();
-  const [isSendMessage, setIsSendMessage] = useState(false);
+  const [isSendMessage, setIsSendMessage] = useState(false); // I don't need that
   const [messageBox, setMessageBox] = useState(false);
   const [messageText, setMessageText] = useState("");
 
@@ -24,7 +24,6 @@ const ProfilePage = () => {
     text: messageText,
     useridtoid: userObj.id,
   };
-  // console.log(messageObj);
 
   const handleSendMessage = async (e) => {
     e.preventDefault();

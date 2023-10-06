@@ -7,15 +7,16 @@ import ListOfUsers from "../../components/DirectMessages/ListOfUsers";
 const DirecMessages = () => {
   const [user, token] = useAuth();
   const [users, setUsers] = useState([]);
-  // for direct messages
   const [messages, setMessages] = useState([]);
-  //
   const [activeIndex, setActiveIndex] = useState(-1);
 
   useEffect(() => {
     fetchUsers();
     fetchMessages();
   }, []);
+
+  console.log(users);
+  console.log(activeIndex);
 
   const fetchUsers = async () => {
     try {
@@ -33,7 +34,8 @@ const DirecMessages = () => {
     }
   };
 
-  // for direct messages empty
+  // const selectedUSer = user[activeIndex];
+
   const fetchMessages = async () => {
     try {
     } catch (error) {
@@ -52,7 +54,10 @@ const DirecMessages = () => {
         />
       </div>
       <div>
-        <DirectMessagesUser userObj={users[activeIndex]} />
+        <DirectMessagesUser
+          userObj={users[activeIndex]}
+          activeIndex={activeIndex}
+        />
       </div>
     </div>
   );

@@ -17,8 +17,6 @@ const HomePage = () => {
     }
   };
 
-  console.log(topics);
-
   useEffect(() => {
     fetchTopic();
   }, [topics]);
