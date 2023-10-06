@@ -9,6 +9,9 @@ const DirecMessages = () => {
   const [users, setUsers] = useState([]);
   // for direct messages
   const [messages, setMessages] = useState([]);
+  //
+  const [activeIndex, setActiveIndex] = useState(-1);
+  const selectedUser = users[activeIndex];
 
   useEffect(() => {
     fetchUsers();
@@ -43,9 +46,15 @@ const DirecMessages = () => {
     <div>
       <h2>Message Page</h2>
       <div>
-        <ListOfUsers users={users} />
+        <ListOfUsers
+          users={users}
+          activeIndex={activeIndex}
+          setActiveIndex={setActiveIndex}
+        />
       </div>
-      <div>{/* <DirectMessagesUser />/ */}</div>
+      <div>
+        <DirectMessagesUser userObj={selectedUser} />
+      </div>
     </div>
   );
 };

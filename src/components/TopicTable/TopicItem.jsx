@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 const TopicItem = ({ topic, userObj }) => {
   const [user, token] = useAuth();
-  const handleActive = () => {}; // what is that stuff?
+  const handleActive = () => {}; // what is that stuff? i don;t think I need this
   const navigate = useNavigate();
 
   var checkProdileIsAuthorizedUser = false;

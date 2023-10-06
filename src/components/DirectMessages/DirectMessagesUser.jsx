@@ -1,7 +1,8 @@
-const DirectMessagesUser = () => {
+const DirectMessagesUser = ({ userObj }) => {
+  console.log(userObj);
   return (
     <div>
-      <h2>Direc Message with particular user</h2>
+      <h2>Direct Message with particular user</h2>
     </div>
   );
 };

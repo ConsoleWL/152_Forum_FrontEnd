@@ -1,8 +1,12 @@
-const UserItem = ({ userObj }) => {
-  console.log(userObj);
+const UserItem = ({ userObj, activeIndex, setActiveIndex }) => {
+  const handleActive = () => {
+    setActiveIndex(userObj.userName);
+    console.log(`You clicked ${userObj.userName}`);
+  };
+
   return (
     <tr>
-      <td>{userObj.userName}</td>
+      <td onClick={handleActive}>{userObj.userName}</td>
     </tr>
   );
 };

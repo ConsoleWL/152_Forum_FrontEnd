@@ -1,9 +1,13 @@
 import UserItem from "./UserItem";
 
-const ListOfUsers = ({ users }) => {
-  console.log(users);
+const ListOfUsers = ({ users = [], activeIndex, setActiveIndex }) => {
   const userItem = users.map((user) => (
-    <UserItem userObj={user} key={user.id} />
+    <UserItem
+      userObj={user}
+      key={user.id}
+      activeIndex={activeIndex}
+      setActiveIndex={setActiveIndex}
+    />
   ));
   return (
     <table>
