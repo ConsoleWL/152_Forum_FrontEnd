@@ -7,14 +7,14 @@ const TopicTable = ({ topicsObj = [], userObj }) => {
   return (
     topicItem && (
       <div>
-        <table className="table table-striped">
+        <table className="table table-striped table-hover">
           <thead>
             <tr>
-              <th>Id</th>
-              <th>Title</th>
-              <th>Athor</th>
-              <th>Published</th>
-              <th>Likes</th>
+              <th scope="col">Id</th>
+              <th scope="col">Title</th>
+              <th scope="col">Athor</th>
+              <th scope="col">Published</th>
+              <th scope="col">Likes</th>
             </tr>
           </thead>
           <tbody>{topicItem}</tbody>

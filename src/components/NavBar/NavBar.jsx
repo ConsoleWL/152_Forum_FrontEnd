@@ -3,41 +3,60 @@ import { useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 import "./NavBar.css";
+import "bootstrap/dist/css/bootstrap.css";
 
 const Navbar = () => {
   const { logoutUser, user } = useContext(AuthContext);
 
   const navigate = useNavigate();
   return (
-    <div className="navBar">
+    <div className="navbar bg-dark border-bottom border-body ">
       <ul>
         <li className="brand">
           <Link to="/" style={{ textDecoration: "none", color: "white" }}>
-            <b>Forum Nikki</b>
+            <b>Forum</b>
           </Link>
         </li>
         <li>
           {user && (
             <Link to={`/profile/${user.userName}`}>
-              <button>Profile</button>
+              <button type="button" className="btn btn-secondary">
+                Profile
+              </button>
             </Link>
           )}
         </li>
         <li>
           <Link to="/">
-            <button>Home</button>
+            <button type="button" className="btn btn-secondary">
+              Home
+            </button>
           </Link>
         </li>
         <li>
           <Link to="/Messages">
-            <button>Messages</button>
+            <button type="button" className="btn btn-secondary">
+              Messages
+            </button>
           </Link>
         </li>
         <li>
           {user ? (
-            <button onClick={logoutUser}>Logout</button>
+            <button
+              onClick={logoutUser}
+              type="button"
+              className="btn btn-secondary"
+            >
+              Logout
+            </button>
           ) : (
-            <button onClick={() => navigate("/login")}>Login</button>
+            <button
+              onClick={() => navigate("/login")}
+              type="button"
+              className="btn btn-secondary"
+            >
+              Login
+            </button>
           )}
         </li>
       </ul>

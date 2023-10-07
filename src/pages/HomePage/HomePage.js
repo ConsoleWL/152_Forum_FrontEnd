@@ -24,7 +24,9 @@ const HomePage = () => {
   return (
     <div>
       <Link to="/addtopic">
-        <button>New Topic</button>
+        <button type="button" className="btn btn-secondary">
+          New Topic
+        </button>
       </Link>
       <TopicTable topicsObj={topics} />
     </div>

@@ -69,13 +69,19 @@ const TopicPage = ({}) => {
       {topicReview && <Comments props={topicReview} />}
 
       <form onSubmit={handleAddComent}>
-        <h4>Leave review table</h4>
-        <textarea
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          placeholder="comment"
-        />
-        <button type="submit">Add Comment </button>
+        <div>
+          <textarea
+            className="form-control"
+            id="exampleFormControlTextarea1"
+            rows="3"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            placeholder="comment"
+          />
+        </div>
+        <button type="submit" className="btn btn-secondary">
+          Add Comment{" "}
+        </button>
       </form>
     </div>
   );

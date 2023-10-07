@@ -49,15 +49,15 @@ const Topic = ({ props }) => {
 
   return (
     <div>
-      <div>
-        <div>
+      <div className="d-flex justify-content-evenly">
+        <span>
           Author:
           <Link to={`/profile/${props.user.userName}`}>
             {props.user.userName}
           </Link>
-        </div>
-        <div>PublishedDate {shortDateFormat}</div>
-        <div>Likes: {props.likes}</div>
+        </span>
+        <span>PublishedDate {shortDateFormat}</span>
+        <span>Likes: {props.likes}</span>
       </div>
 
       {isEditing ? (
@@ -82,7 +82,7 @@ const Topic = ({ props }) => {
         </div>
       ) : (
         <div>
-          <div>Title: {props.title}</div>
+          <div className="d-flex justify-content-center">{props.title}</div>
           <div>Text: {props.text}</div>
         </div>
       )}

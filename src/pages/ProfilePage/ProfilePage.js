@@ -68,7 +68,13 @@ const ProfilePage = () => {
       <h4>Profile page</h4>
       <div>
         {chechProfileIsUf ? (
-          <button onClick={handleSendMessageButton}>Send a Messages</button>
+          <button
+            onClick={handleSendMessageButton}
+            type="button"
+            className="btn btn-secondary"
+          >
+            Send a Messages
+          </button>
         ) : null}
 
         {messageBox ? (

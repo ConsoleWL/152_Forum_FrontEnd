@@ -17,6 +17,7 @@ const DirecMessages = () => {
   useEffect(() => {
     fetchMessages();
   }, [activeIndex]);
+  // console.log(users[activeIndex]);
 
   const fetchUsers = async () => {
     try {
@@ -65,7 +66,14 @@ const DirecMessages = () => {
           setActiveIndex={setActiveIndex}
         />
       </div>
-      <div>{messages && <DirectMessagesUser messages={messages} />}</div>
+      <div>
+        {messages && (
+          <DirectMessagesUser
+            messages={messages}
+            // user={users[activeIndex].userName}
+          />
+        )}
+      </div>
     </div>
   );
 };

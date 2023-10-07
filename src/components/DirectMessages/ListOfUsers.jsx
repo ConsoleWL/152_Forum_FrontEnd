@@ -11,10 +11,10 @@ const ListOfUsers = ({ users = [], activeIndex, setActiveIndex }) => {
     />
   ));
   return (
-    <table>
+    <table className="table table-striped">
       <thead>
         <tr>
-          <th> User:</th>
+          <th>Users:</th>
         </tr>
       </thead>
       <tbody>{userItem}</tbody>

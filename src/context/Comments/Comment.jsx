@@ -85,20 +85,22 @@ const Comment = ({ commentObj, userObj }) => {
     <div>
       <br />
       <div>
-        <span>id: {commentObj.commentId} </span>
-        <span>
-          likes:
-          <button onClick={handleCommentLikes}> {commentObj.likes}</button>
-        </span>
-        <span>
-          Author:
-          <Link to={`/profile/${commentObj.user.userName}`}>
-            {commentObj.user.userName}
-          </Link>
-        </span>
-        <span> published: {shortDateFormat} </span>
-        <div>
-          <span>Text: {commentObj.text}</span>
+        <div className="d-flex justify-content-around ">
+          <span>id: {commentObj.commentId} </span>
+          <span>
+            likes:
+            <button onClick={handleCommentLikes}> {commentObj.likes}</button>
+          </span>
+          <span>
+            Author:
+            <Link to={`/profile/${commentObj.user.userName}`}>
+              {commentObj.user.userName}
+            </Link>
+          </span>
+          <span>{shortDateFormat} </span>
+        </div>
+        <div className="d-flex justify-content-center ">
+          <span>{commentObj.text}</span>
         </div>
 
         {isEditing ? (
@@ -114,15 +116,29 @@ const Comment = ({ commentObj, userObj }) => {
           </div>
         ) : null}
 
-        <div>
-          {checkProdileIsAuthorizedUser ? (
-            <button onClick={handleDeleteComment}>Delete</button>
-          ) : null}
-        </div>
-        <div>
-          {checkProdileIsAuthorizedUser && !isEditing ? (
-            <button onClick={handleUpdateUpdate}>Update</button>
-          ) : null}
+        <div className="d-flex flex-row-reverse">
+          <div>
+            {checkProdileIsAuthorizedUser ? (
+              <button
+                onClick={handleDeleteComment}
+                type="button"
+                className="btn btn-secondary"
+              >
+                Delete
+              </button>
+            ) : null}
+          </div>
+          <div>
+            {checkProdileIsAuthorizedUser && !isEditing ? (
+              <button
+                onClick={handleUpdateUpdate}
+                type="button"
+                className="btn btn-secondary"
+              >
+                Update
+              </button>
+            ) : null}
+          </div>
         </div>
       </div>
     </div>

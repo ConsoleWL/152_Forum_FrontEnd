@@ -60,29 +60,29 @@ const TopicItem = ({ topic, userObj }) => {
 
   return (
     <tr onClick={handleActive}>
-      <td>{topic.topicId}</td>
-      <td>
+      <td scope="row">{topic.topicId}</td>
+      <td scope="row">
         <Link to={`/topic/${topic.topicId}`}>{topic.title}</Link>
       </td>
-      <td>
+      <td scope="row">
         <Link to={`/profile/${topic.user.userName}`}>
           {topic.user.userName}
         </Link>
       </td>
-      <td> {shortDateFormat}</td>
-      <td>
+      <td scope="row"> {shortDateFormat}</td>
+      <td scope="row">
         <button onClick={handleTopicLikes}>{topic.likes}</button>
       </td>
 
       {checkProdileIsAuthorizedUser ? (
         <td>
-          <button onClick={handleDeleteTopic}>Delete</button>
-        </td>
-      ) : null}
-
-      {checkProdileIsAuthorizedUser ? (
-        <td>
-          <button onClick={handleUpdateTopic}>Update</button>
+          <button
+            onClick={handleDeleteTopic}
+            type="button"
+            className="btn btn-secondary"
+          >
+            Delete
+          </button>
         </td>
       ) : null}
     </tr>
